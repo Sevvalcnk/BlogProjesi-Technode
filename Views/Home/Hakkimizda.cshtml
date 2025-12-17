@@ -1,0 +1,142 @@
+﻿@{
+    ViewData["Title"] = "Hakkımızda";
+}
+
+<style>
+   
+    body {
+        background-color: #05070a;
+        background-image: radial-gradient(circle at 50% -20%, rgba(0, 229, 255, 0.15), transparent 60%), radial-gradient(circle at 50% 120%, rgba(0, 255, 204, 0.1), transparent 60%);
+        background-attachment: fixed;
+        color: #e0e0e0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    
+    .about-container {
+        background-color: rgba(10, 15, 28, 0.95);
+        border: 1px solid rgba(0, 229, 255, 0.2);
+        border-radius: 20px;
+        padding: 40px 60px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+    
+    .main-title {
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 800;
+        font-size: 3rem;
+        color: #00E5FF;
+        text-transform: uppercase;
+        text-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+        margin-bottom: 10px;
+    }
+
+    .main-slogan {
+        color: #00FFCC;
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+    }
+
+   
+    .section-header {
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
+        color: #fff;
+        border-left: 4px solid #00E5FF;
+        padding-left: 15px;
+        margin-top: 40px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+    }
+
+    .feature-box {
+        padding: 20px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(0, 255, 204, 0.1);
+        transition: 0.3s;
+        height: 100%;
+    }
+
+        .feature-box:hover {
+            background: rgba(0, 255, 204, 0.05);
+            border-color: #00FFCC;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+        }
+
+    .feature-icon {
+        font-size: 2rem;
+        margin-right: 15px;
+    }
+
+    .feature-box h4 {
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 700;
+        color: #00FFCC;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+    }
+
+    .feature-box p {
+        color: #b0b0b0;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    
+    hr {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+  
+    .small-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+</style>
+
+<div class="container">
+    <div class="about-container">
+
+        <h1 class="main-title text-center">Teknoloji Tutkusuyla Geleceği Kodluyoruz</h1>
+        <p class="main-slogan text-center">TechNode: Bilginin, güvenliğin ve kodun buluşma noktası.</p>
+
+        <hr>
+
+        <h2 class="section-header">Biz Kimiz?</h2>
+        <p class="small-text">
+            Dijital dünyanın hızla evrildiği bu çağda, bilgiye ulaşmak kadar doğru bilgiye ulaşmak da zorlaştı.
+            <strong>TechNode</strong>, tam da bu ihtiyaca cevap vermek için kurulmuş, teknoloji meraklıları tarafından yönetilen bağımsız bir platformdur.
+            Sadece "haber" paylaşmıyoruz; teknolojinin derinliklerine iniyoruz. Bir yazılımın arkasındaki mantığı, bir siber saldırının analizini veya yeni çıkan bir donanımın mimarisini inceliyoruz.
+        </p>
+
+        <hr>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="feature-box">
+                    <h4><i class="fas fa-shield-alt feature-icon" style="color: #FF3333;"></i> Siber Güvenlik</h4>
+                    <p>Dijital kalelerin nasıl korunduğunu ve tehditlerin nasıl bertaraf edildiğini inceliyoruz. Ağ güvenliği, penetrasyon testleri ve güncel zafiyetler hakkında detaylı raporlar sunuyoruz.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="feature-box">
+                    <h4><i class="fas fa-code feature-icon" style="color: #00E5FF;"></i> Yazılım & Geliştirme</h4>
+                    <p>Modern kodlama pratikleri, algoritmalar ve yazılım mimarileri üzerine rehberler hazırlıyoruz. Temiz kod (Clean Code) prensipleriyle geleceğin yazılımcılarına ışık tutuyoruz.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

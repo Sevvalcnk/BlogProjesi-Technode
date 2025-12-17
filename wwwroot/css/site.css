@@ -1,0 +1,247 @@
+:root {
+    --neon-cyan: #00E5FF;
+    --neon-green: #00FFCC;
+    --bg-dark: #05070a;
+    --panel: #07101a;
+    --glass: rgba(255,255,255,0.03);
+    --white: #ffffff;
+    --muted: #9aa8b6;
+    
+    --neon-green2: #ff9900;
+    --neon-cyan2: #ff00ff;
+    --bg-dark2: #0a0a0a;
+}
+
+
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+}
+html, body {
+    /* Koyu bir arka plan rengi */
+    background-color: #05070a !important;
+    /* Neon temaya uygun bir arka plan resmi */
+    background-image: linear-gradient(rgba(5, 7, 10, 0.9), rgba(5, 7, 10, 0.9)), /* Resmi biraz karartmak için */
+    url('https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg'); /* Neon görsel linki */
+    /* Arka planýn tüm sayfayý kaplamasýný ve tekrar etmemesini saðlar */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Sayfa kaydýrýlsa bile arka plan sabit kalýr */
+    /* Sayfanýn en az ekran yüksekliði kadar olmasýný garanti eder */
+    min-height: 100vh;
+    /* Yatay kaydýrmayý engeller */
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+    a:hover {
+        color: var(--secondary);
+        text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
+    }
+
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    padding: 15px 0;
+    border-bottom: 2px solid rgba(0, 229, 255, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 900;
+    font-size: 1.6rem;
+    letter-spacing: -0.5px;
+    background: var(--tech-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.navbar-nav .nav-link {
+    padding: 8px 20px !important;
+    border-radius: 50px;
+    font-weight: 600;
+    color: #64748b !important;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: var(--primary) !important;
+        background-color: rgba(0, 229, 255, 0.05) !important;
+        transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link.active {
+        background: var(--tech-gradient) !important;
+        color: white !important;
+        box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+    }
+
+
+.card, .blog-card, .login-card {
+    border: none !important;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft) !important;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+    .card:hover, .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-glow) !important;
+        border: 1px solid rgba(0, 229, 255, 0.3) !important;
+    }
+
+
+.form-control {
+    background-color: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 12px;
+    padding: 12px;
+}
+
+    .form-control:focus {
+        background-color: white !important;
+        border-color: var(--primary) !important;
+        box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.1) !important;
+    }
+
+
+.btn-primary {
+    background: var(--tech-gradient) !important;
+    border: none !important;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-weight: bold;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #00C6FF 0%, #0072FF 100%) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 229, 255, 0.5);
+    }
+
+.btn-outline-primary {
+    color: var(--primary) !important;
+    border: 2px solid var(--primary) !important;
+    border-radius: 50px;
+    font-weight: bold;
+    background: transparent !important;
+}
+
+    .btn-outline-primary:hover {
+        background: var(--tech-gradient) !important;
+        color: white !important;
+        border-color: transparent !important;
+    }
+
+img {
+    margin-left: 10px;
+}
+
+.card-img-top {
+    margin-left: 0;
+}
+
+
+.form-box {
+    position: absolute;
+    top: 0;
+    width: calc(100% - 320px);
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.6s ease;
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+    .form-box.active {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+
+.content {
+    flex: 1; 
+    padding-bottom: 20px; 
+}
+
+
+.footer {
+    flex-shrink: 0; 
+    background-color: #0A0F1C; 
+    color: #D6D6D6;
+    padding: 15px 0;
+    width: 100%;
+}
+
+
+.mb-3 {
+    margin-bottom: 0 !important;
+}
+.table-cyber td {
+    vertical-align: middle !important; /* Dikey ortalama için en güvenilir komut */
+    padding: 15px 10px; /* Biraz daha boþluk verdik */
+}
+
+/* 2. Kategori Etiketlerini Tek Satýrda Tut ve Hizala */
+/* Kategori etiketi tek satýrda kalmalý ve hücrede ortalanmalýdýr. */
+.badge-cyber {
+    display: inline-flex;
+    align-items: center; /* Dikey ortalama */
+    justify-content: center; /* Yatay ortalama */
+    text-align: center;
+    white-space: nowrap !important; /* KRÝTÝK: Metnin tek satýrda kalmasýný saðlar */
+    min-width: 100px; /* Etiketlere minimum geniþlik vererek hizayý sabitler */
+    /* Eðer etiket hala kayýyorsa, overflow-x'i gizle */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+}
+
+/* 3. ÝÞLEMLER Simgelerini (Göz, Kalem, Çöp) Hizala */
+/* Senin HTML yapýnda Ýþlemler simgeleri div içine alýnmadýðý için, o TD'yi doðrudan Flexbox ile düzenliyoruz. */
+
+/* table-cyber'daki Ýþlemler sütununu bulmak için CSS'teki text-end özelliðini kullanacaðýz: */
+.table-cyber td.text-end {
+    display: flex;
+    align-items: center; /* Dikeyde kusursuz hizalama */
+    justify-content: center; /* Yatayda ortaya hizalama */
+    gap: 10px; /* Simgeler arasýna boþluk */
+    height: 100%; /* Hücrenin yüksekliðini kapla */
+}
+
+

@@ -1,0 +1,118 @@
+﻿@{
+    ViewData["Title"] = "Şifremi Unuttum";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Şifremi Unuttum - TechNode</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* SİYAH/NEON TASARIM */
+        body {
+            background-color: #05070a;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .reset-box {
+            background: rgba(10, 15, 28, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            box-shadow: 0 0 50px rgba(0, 229, 255, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #00E5FF;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+
+        .form-control {
+            background: #0b1120;
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            color: #fff;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+            .form-control:focus {
+                background: #122335;
+                border-color: #00E5FF;
+                box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+                color: #fff;
+                outline: none;
+            }
+
+        .btn-neon {
+            background: linear-gradient(90deg, #00E5FF, #00FFCC);
+            color: #000;
+            font-weight: bold;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+            .btn-neon:hover {
+                transform: scale(1.05);
+                box-shadow: 0 0 30px rgba(0, 229, 255, 0.6);
+            }
+
+        .back-link {
+            display: block;
+            margin-top: 20px;
+            color: #888;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+            .back-link:hover {
+                color: #fff;
+            }
+    </style>
+</head>
+<body>
+    <div class="reset-box">
+        <h2><i class="fas fa-lock-open"></i> Şifremi Unuttum</h2>
+        <p style="color:#aaa; font-size:0.9rem; margin-bottom:25px;">Kayıtlı e-posta adresinizi girin.</p>
+
+        @if (ViewBag.Mesaj != null)
+        {
+            <div class="alert alert-info" style="background: rgba(0, 229, 255, 0.1); border-color: #00E5FF; color: #fff;">
+                <i class="fas fa-check-circle"></i> @ViewBag.Mesaj
+            </div>
+            <p style="font-size:10px; color:#555;">(Visual Studio Output ekranına link gönderildi)</p>
+        }
+        else
+        {
+            <form asp-action="SifremiUnuttum" method="post">
+                <input type="email" name="email" class="form-control" placeholder="E-Posta Adresiniz" required>
+                <button type="submit" class="btn-neon">GÖNDER</button>
+            </form>
+        }
+
+        <a asp-action="Login" class="back-link"><i class="fas fa-arrow-left"></i> Giriş Ekranına Dön</a>
+    </div>
+</body>
+</html>

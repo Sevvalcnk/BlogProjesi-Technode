@@ -1,0 +1,48 @@
+﻿@model BlogProjesi.Models.LoginViewModel
+
+<link rel="stylesheet" href="~/css/login-style.css" />
+
+<div class="container login-container">
+    <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-9">
+            <div class="card login-card flex-row my-5">
+
+                <div class="col-lg-7 login-form-col">
+                    <h2 class="login-title text-center">Giriş Yap</h2>
+                    <p class="text-center text-muted mb-4">Hoş geldiniz! Lütfen bilgilerinizi girin.</p>
+
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <input asp-for="Email" class="form-control form-control-lg" placeholder="E-Posta Adresi" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <input asp-for="Sifre" type="password" class="form-control form-control-lg" placeholder="Şifre" />
+                            <span asp-validation-for="Sifre" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-mor btn-lg">GİRİŞ YAP</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-5 login-info-col d-none d-lg-flex">
+                    <h3 class="info-title">Merhaba, TechNode Üyesi!</h3>
+                    <p class="text-white-50 mb-4">Henüz bir hesabın yok mu? Hemen aramıza katıl.</p>
+                    <a asp-action="Register" asp-controller="Account" class="btn btn-outline-beyaz">KAYIT OL</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

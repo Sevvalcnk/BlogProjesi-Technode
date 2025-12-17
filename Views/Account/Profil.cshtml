@@ -1,0 +1,61 @@
+﻿@model BlogProjesi.Models.ProfilViewModel
+
+@{
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card bg-dark text-white shadow-lg" style="border: 2px solid #00E5FF; border-radius: 20px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);">
+                <div class="card-header text-center pt-4" style="border: none; background: transparent;">
+                    <h2 style="color: #00E5FF; text-shadow: 0 0 10px #00E5FF; font-family: 'Rajdhani', sans-serif; font-weight: 700;">
+                        <i class="fas fa-user-astronaut"></i> PROFİL BİLGİLERİM
+                    </h2>
+                </div>
+
+                <div class="card-body p-5">
+
+                    @if (TempData["Mesaj"] != null)
+                    {
+                        <div class="alert alert-success text-center" style="background-color: rgba(0, 229, 255, 0.2); border: 1px solid #00E5FF; color: white;">
+                            @TempData["Mesaj"]
+                        </div>
+                    }
+
+                    <form asp-action="Profil" method="post">
+
+                        <div class="mb-4">
+                            <label class="form-label" style="color: #888; font-size: 0.9rem;">E-Posta Adresi (Değiştirilemez)</label>
+                            <input type="text" class="form-control" value="@Model.Email" disabled
+                                   style="background-color: #1a1a1a !important; color: #666 !important; border: 1px solid #333;" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Adınız</label>
+                            <input asp-for="Ad" class="form-control" placeholder="Adınızı yazın..."
+                                   style="background-color: #05070a !important; color: #ffffff !important; border: 1px solid #00E5FF; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1);" />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label text-white fw-bold">Soyadınız</label>
+                            <input asp-for="Soyad" class="form-control" placeholder="Soyadınızı yazın..."
+                                   style="background-color: #05070a !important; color: #ffffff !important; border: 1px solid #00E5FF; box-shadow: 0 0 5px rgba(0, 229, 255, 0.1);" />
+                        </div>
+
+                        <div class="d-grid gap-2 mt-5">
+                            <button type="submit" class="btn btn-lg"
+                                    style="background-color: #00E5FF; border: none; color: #000; font-weight: 900; letter-spacing: 1px; box-shadow: 0 0 15px #00E5FF;">
+                                <i class="fas fa-save me-2"></i> BİLGİLERİ GÜNCELLE
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

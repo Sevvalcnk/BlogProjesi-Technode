@@ -1,0 +1,367 @@
+﻿@using System.Linq
+@using System.Text.RegularExpressions
+@model BlogProjesi.Models.HomeViewModel
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<style>
+    
+    body {
+        background-color: #05070a;
+        background-image: linear-gradient(rgba(5, 7, 10, 0.85), rgba(5, 7, 10, 0.85)), url('https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+    }
+
+   
+    .hero-section {
+        text-align: center;
+        padding: 80px 20px;
+        margin-bottom: 40px;
+    }
+
+    .brand-neon {
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: 800;
+        font-size: 4rem;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        text-shadow: 0 0 10px #00E5FF, 0 0 20px #00E5FF, 0 0 40px #00E5FF;
+        margin-bottom: 10px;
+        animation: flicker 3s infinite alternate;
+    }
+
+    .brand-slogan {
+        color: #00FFCC;
+        font-size: 1.2rem;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    }
+
+   
+    .section-title {
+        font-family: 'Rajdhani', sans-serif;
+        font-size: 2rem;
+        color: #00FFCC;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        text-align: center;
+    }
+
+    .category-grid {
+        display: grid;
+      
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 15px;
+        margin-bottom: 50px;
+        justify-content: center;
+    }
+
+    .cat-card {
+        background: rgba(10, 15, 28, 0.7);
+        border: 2px solid rgba(0, 229, 255, 0.3);
+        border-radius: 15px;
+        padding: 20px 10px;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.3s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+        min-height: 140px;
+        cursor: pointer;
+    }
+
+        .cat-card i {
+            font-size: 2.5rem;
+            color: #00E5FF;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .cat-card span {
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 229, 255, 0.2);
+            border-color: #00FFCC;
+            box-shadow: 0 0 30px rgba(0, 255, 204, 0.5);
+        }
+
+            .cat-card:hover i {
+                color: #00FFCC;
+                text-shadow: 0 0 15px #00FFCC;
+            }
+
+   
+    .article-card {
+        background-color: rgba(11, 17, 32, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: 0.3s;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .article-card:hover {
+            border-color: #00E5FF;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.15);
+        }
+
+    .card-img-top {
+        height: 180px;
+        object-fit: cover;
+        opacity: 0.9;
+        transition: 0.3s;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+    }
+
+    .article-card:hover .card-img-top {
+        opacity: 1;
+    }
+
+    .card-body {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    
+    .card-title a {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #fff;
+        text-decoration: none;
+        font-family: 'Rajdhani', sans-serif;
+        line-height: 1.3;
+        transition: 0.3s;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+        .card-title a:hover {
+            color: #00E5FF;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+
+    .card-text {
+        font-size: 0.85rem;
+        color: #aaa;
+        margin-bottom: 15px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .meta-info {
+        font-size: 0.75rem;
+        color: #666;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .badge-cyber {
+        background-color: rgba(0, 255, 204, 0.1);
+        color: #00FFCC;
+        padding: 3px 8px;
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 0.7rem;
+        border: 1px solid rgba(0, 255, 204, 0.3);
+    }
+
+    .btn-read-more {
+        margin-top: auto;
+        background: transparent;
+        color: #00E5FF;
+        border: 1px solid #00E5FF;
+        padding: 8px 0;
+        text-align: center;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+        font-size: 0.9rem;
+    }
+
+        .btn-read-more:hover {
+            background: #00E5FF;
+            color: #000;
+            box-shadow: 0 0 15px #00E5FF;
+        }
+
+    @@keyframes flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+            text-shadow: 0 0 10px #00E5FF, 0 0 20px #00E5FF, 0 0 40px #00E5FF;
+        }
+
+        20%, 24%, 55% {
+            text-shadow: none;
+        }
+    }
+
+   
+    @@media (max-width: 992px) {
+        
+        .brand-neon {
+            font-size: 3rem !important;
+            letter-spacing: 2px;
+        }
+        
+        .category-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 10px;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        
+        .brand-neon {
+            font-size: 2.5rem !important;
+        }
+        
+        .category-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 10px;
+        }
+       
+        .row-cols-md-3 > * {
+            flex: 0 0 auto;
+            width: 100%;
+        }
+        
+        .hero-section {
+            padding: 40px 10px;
+        }
+    }
+
+    @@media (max-width: 450px) {
+       
+        .category-grid {
+            grid-template-columns: 1fr !important;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <div class="hero-section">
+        <h1 class="brand-neon">GELECEĞİ KODLUYORUZ</h1>
+        <div class="brand-slogan">Yazılım, Yapay Zeka ve Siber Güvenlik dünyasına dair en güncel içerikler TechNode'da.</div>
+    </div>
+
+    <div class="mb-5">
+        <h3 class="section-title">Alanını Seç ve Keşfet</h3>
+        @if (Model.Kategoriler != null && Model.Kategoriler.Any())
+        {
+            <div class="category-grid">
+                @foreach (var kategori in Model.Kategoriler)
+                {
+                    string iconClass = "fa-layer-group";
+                    if (!string.IsNullOrEmpty(kategori.Ad))
+                    {
+                        if (kategori.Ad.Contains("Yazılım")) { iconClass = "fa-code"; }
+                        else if (kategori.Ad.Contains("Siber")) { iconClass = "fa-user-secret"; }
+                        else if (kategori.Ad.Contains("Donanım")) { iconClass = "fa-microchip"; }
+                        else if (kategori.Ad.Contains("Yapay")) { iconClass = "fa-brain"; }
+                        else if (kategori.Ad.Contains("Mobil")) { iconClass = "fa-mobile-alt"; }
+                        else if (kategori.Ad.Contains("Oyun")) { iconClass = "fa-gamepad"; }
+                    }
+
+                    <a asp-controller="Makales" asp-action="Index" asp-route-kategoriId="@kategori.Id" class="cat-card">
+                        <i class="fas @iconClass"></i>
+                        <span>@kategori.Ad</span>
+                    </a>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted text-center">Henüz kategori eklenmemiş.</p>
+        }
+    </div>
+
+    <div class="mb-5">
+        <h3 class="section-title" style="border-color: #00E5FF; color: #00E5FF;">Son Eklenenler</h3>
+        @if (Model.SonMakaleler != null && Model.SonMakaleler.Any())
+        {
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach (var makale in Model.SonMakaleler)
+                {
+                    <div class="col">
+                        <div class="article-card">
+
+                            <a asp-controller="Makales" asp-action="Details" asp-route-id="@makale.Id">
+                                @if (!string.IsNullOrEmpty(makale.ResimUrl))
+                                {
+                                    <img src="@makale.ResimUrl" class="card-img-top" alt="@makale.Baslik">
+                                }
+                                else
+                                {
+                                    <div class="card-img-top d-flex align-items-center justify-content-center bg-dark text-muted">
+                                        <i class="fas fa-image fa-2x"></i>
+                                    </div>
+                                }
+                            </a>
+
+                            <div class="card-body">
+                                <div class="meta-info">
+                                    <span class="badge-cyber">@makale.Kategori?.Ad</span>
+                                    <span><i class="far fa-clock"></i> @makale.OlusturulmaTarihi.ToString("dd.MM.yyyy")</span>
+                                </div>
+
+                                <h5 class="card-title">
+                                    <a asp-controller="Makales" asp-action="Details" asp-route-id="@makale.Id">
+                                        @makale.Baslik
+                                    </a>
+                                </h5>
+
+                                <p class="card-text">
+                                    @if (!string.IsNullOrEmpty(makale.Icerik))
+                                    {
+                                        @Html.Raw(Regex.Replace(makale.Icerik, "<.*?>", String.Empty).Length > 100 ? Regex.Replace(makale.Icerik, "<.*?>", String.Empty).Substring(0, 100) + "..." : Regex.Replace(makale.Icerik, "<.*?>", String.Empty))
+                                    }
+                                </p>
+
+                                <a asp-controller="Makales" asp-action="Details" asp-route-id="@makale.Id" class="btn-read-more">
+                                    Devamını Oku <i class="fas fa-arrow-right ms-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted text-center">Henüz makale eklenmemiş.</p>
+        }
+    </div>
+
+</div>

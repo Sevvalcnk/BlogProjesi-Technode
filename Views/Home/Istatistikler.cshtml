@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Grafiksel Analiz";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="container mt-5">
+
+    <div class="text-center mb-5">
+        <h2 style="color: #00E5FF; font-family: 'Rajdhani', sans-serif; font-weight: 700; letter-spacing: 2px;">
+            <i class="fas fa-chart-line me-2"></i> SİSTEM ANALİZ MERKEZİ
+        </h2>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-5 g-3 mb-5 text-white">
+
+        <div class="col">
+            <div class="p-3 text-center h-100 d-flex flex-column justify-content-center"
+                 style="background: rgba(0, 229, 255, 0.1); border: 1px solid #00E5FF; border-radius: 15px;">
+                <h3 class="fw-bold">@ViewBag.ToplamOkunma</h3>
+                <small style="color: #00E5FF; font-size: 0.8rem;">TOPLAM OKUNMA</small>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="p-3 text-center h-100 d-flex flex-column justify-content-center"
+                 style="background: rgba(157, 0, 255, 0.1); border: 1px solid #9D00FF; border-radius: 15px; box-shadow: 0 0 10px rgba(157, 0, 255, 0.2);">
+                <h3 class="fw-bold">@ViewBag.ToplamBegeni</h3>
+                <small style="color: #9D00FF; font-size: 0.8rem;">TOPLAM BEĞENİ</small>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="p-3 text-center h-100 d-flex flex-column justify-content-center"
+                 style="background: rgba(0, 255, 204, 0.1); border: 1px solid #00FFCC; border-radius: 15px;">
+                <h3 class="fw-bold">@ViewBag.ToplamUye</h3>
+                <small style="color: #00FFCC; font-size: 0.8rem;">KAYITLI ÜYE</small>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="p-3 text-center h-100 d-flex flex-column justify-content-center"
+                 style="background: rgba(255, 0, 85, 0.1); border: 1px solid #FF0055; border-radius: 15px;">
+                <h3 class="fw-bold">@ViewBag.ToplamMakale</h3>
+                <small style="color: #FF0055; font-size: 0.8rem;">TOPLAM İÇERİK</small>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="p-3 text-center h-100 d-flex flex-column justify-content-center"
+                 style="background: rgba(255, 200, 0, 0.1); border: 1px solid #FFC800; border-radius: 15px;">
+                <h3 class="fw-bold">@ViewBag.RekorSayi</h3>
+                <small style="color: #FFC800; font-size: 0.8rem;" title="@ViewBag.RekorBaslik">REKOR İÇERİK</small>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 mb-4">
+            <div class="card p-4 h-100" style="background: #0b1120; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;">
+                <h5 class="text-center text-white mb-4">KATEGORİ DAĞILIMI</h5>
+                <div style="position: relative; height: 300px;">
+                    <canvas id="pastaGrafik"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 mb-4">
+            <div class="card p-4 h-100" style="background: #0b1120; border: 1px solid rgba(255,255,255,0.1); border-radius: 15px;">
+                <h5 class="text-center text-white mb-4">🔥 EN ÇOK OKUNANLAR</h5>
+                <div style="height: 300px;">
+                    <canvas id="barGrafik"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // GLOBAL YAZI RENGİ AYARI (Yazı görünürlüğü için)
+    Chart.defaults.color = '#FFFFFF';
+
+    // Verileri Al
+    var katIsim = @Html.Raw(ViewBag.KatIsimleri);
+    var katSayi = @Html.Raw(ViewBag.KatSayilari);
+    var makBaslik = @Html.Raw(ViewBag.MakBasliklari);
+    var makOkunma = @Html.Raw(ViewBag.MakOkunmalari);
+
+    // PASTA GRAFİK
+    new Chart(document.getElementById('pastaGrafik'), {
+        type: 'doughnut',
+        data: {
+            labels: katIsim,
+            datasets: [{
+                data: katSayi,
+                backgroundColor: ['#00E5FF', '#00FFCC', '#FF0055', '#9D00FF', '#FFC800'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'right',
+                    labels: {
+                        color: '#FFFFFF'
+                    }
+                }
+            }
+        }
+    });
+
+    // ÇUBUK GRAFİK (Sola Kayma ve Başlık Ayarları)
+    new Chart(document.getElementById('barGrafik'), {
+        type: 'bar',
+        data: {
+            labels: makBaslik,
+            datasets: [{
+                label: 'Okunma',
+                data: makOkunma,
+                backgroundColor: 'rgba(0, 229, 255, 0.7)',
+                borderRadius: 5,
+                categoryPercentage: 0.7,
+                barPercentage: 0.9
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+
+            // ⭐ SOLA KAYDIRMA AYARI: Bu değeri küçülterek grafik alanını büyütüyoruz
+            layout: {
+                padding: {
+                    // Grafiği sola kaydırmak için 50'de tutuyoruz.
+                    left: 50
+                }
+            },
+
+            // ⭐ Y EKSENİ AYARLARI
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#FFFFFF'
+                    },
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                },
+                y: {
+                    ticks: {
+                        color: '#FFFFFF',
+                        font: {
+                            size: 9
+                        },
+                        // Artık bu callback'i sadece C# kısaltması yoksa kullanırız.
+                        // C# kısaltmasını yaptığınız için bu kısmı kaldırdık, sadece etiketi döndürüyoruz.
+                    },
+                    grid: { display: false }
+                }
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.85)',
+                    bodyColor: '#FFFFFF',
+                    titleColor: '#00E5FF'
+                }
+            }
+        }
+    });
+</script>
