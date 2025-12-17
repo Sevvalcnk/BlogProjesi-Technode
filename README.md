@@ -107,9 +107,9 @@ Yerel ortamda çalıştırmak için:
 ## 🧪 Geliştirme Notları
 * MVC katmanları net şekilde ayrıştırılmıştır
 
-* Harici veritabanı kullanılmamıştır (Veriler statik/in-memory tutulmaktadır)
+* Veri Tabanı MsSql Kullanılmaktadır
 
-* İleride eklenebilecekler: Veritabanı (SQL), Admin Paneli, Rol bazlı yetkilendirme
+* İleride eklenebilecekler:Admin Paneli, Rol bazlı yetkilendirme
 
 ## 👩‍💻 Geliştirici
 * Bu proje eğitim amaçlı geliştirilmiştir.
