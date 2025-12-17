@@ -78,16 +78,6 @@ Uygulama; sade arayüzü, mobil uyumlu yapısı ve katmanlı mimarisiyle akademi
 
 > Harici bir veritabanı veya ek NuGet paketi kullanılmamıştır.
 
-### Kurulum Adımları
-
-1. Depoyu klonlayın:
-```bash
-git clone https://github.com/kullaniciadi/technode.git
-Projeyi Visual Studio ile açın
-
-NuGet paketlerinin otomatik olarak yüklenmesini bekleyin
-
-Uygulamayı çalıştırın (Ctrl + F5)
 
 🔐 Güvenlik Notları
 Kullanıcı giriş ve kayıt işlemleri kontrol altındadır
@@ -114,6 +104,17 @@ eklenebilir
 📚 Ders Kapsamı
 Bu proje, ASP.NET Core MVC dersi kapsamında eğitim amaçlı olarak geliştirilmiştir.
 Amaç; MVC mimarisini öğrenmek, kullanıcı etkileşimli web uygulaması geliştirmek ve GitHub üzerinde profesyonel bir proje sunmaktır.
+
+### Kurulum Adımları
+
+1. Depoyu klonlayın:
+```bash
+git clone https://github.com/kullaniciadi/technode.git
+Projeyi Visual Studio ile açın
+
+NuGet paketlerinin otomatik olarak yüklenmesini bekleyin
+
+Uygulamayı çalıştırın (Ctrl + F5) ```
 
 👩‍💻 Geliştirici
 Şevval Cinek
