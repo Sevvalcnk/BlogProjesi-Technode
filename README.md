@@ -51,19 +51,20 @@ Technode Blog Sistemi; kullanıcıların kayıt olup giriş yapabildiği, makale
 
 ## 📂 Proje Yapısı
 
+```text
+├── Controllers
+├── Models
+├── Views
+│   ├── Account
+│   ├── Blog
+│   ├── Home
+│   └── Shared
+├── wwwroot
+│   └── css
+├── appsettings.json
+├── Program.cs
+└── README.md
 
-├── Controllers       # Uygulama mantığı ve yönlendirmeler
-├── Models            # Veri yapıları ve iş kuralları
-├── Views             # Kullanıcı arayüzü dosyaları
-│   ├── Account       # Giriş/Kayıt sayfaları
-│   ├── Blog          # Blog işlem sayfaları
-│   ├── Home          # Ana sayfa
-│   └── Shared        # Ortak şablonlar (Layout vb.)
-├── wwwroot           # Statik dosyalar
-│   └── css           # Stil dosyaları
-├── appsettings.json  # Yapılandırma ayarları
-├── Program.cs        # Uygulama giriş noktası
-└── README.md         # Proje dokümantasyonu
 
 ⚙️ Kurulum ve Gereksinimler
 Gereksinimler
@@ -74,8 +75,11 @@ Visual Studio 2022 veya üzeri
 Not: Projede harici bir veritabanı veya ek NuGet paketi kullanılmamıştır.
 
 🚀 Kurulum Adımları
-Projeyi Klonlayın: git clone [https://github.com/kullaniciadi/technode.git](https://github.com/kullaniciadi/technode.git)
+Projeyi Klonlayın:
 
+Bash
+
+git clone [https://github.com/kullaniciadi/technode.git](https://github.com/kullaniciadi/technode.git)
 Projeyi Açın:
 
 İndirdiğiniz klasörü Visual Studio ile açın.
