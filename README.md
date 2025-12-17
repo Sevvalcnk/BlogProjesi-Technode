@@ -1,115 +1,122 @@
 # 📰 Technode – Blog Yönetim Sistemi
 
-**Technode**; ASP.NET Core MVC ile geliştirilmiş, responsive tasarıma sahip, kullanıcı etkileşimli bir blog web uygulamasıdır.
+> ASP.NET Core MVC ile geliştirilmiş, responsive tasarıma sahip, kullanıcı etkileşimli modern bir blog web uygulaması.
 
-Bu proje, ders kapsamında modern web teknolojilerini uygulamak ve MVC mimarisini profesyonel düzeyde kullanmak amacıyla geliştirilmiştir.
+---
 
 ## 🔎 Proje Özeti
 
-Technode Blog Sistemi; kullanıcıların kayıt olup giriş yapabildiği, makale okuyup oluşturabildiği ve içeriklere yorum yapabildiği modern bir blog platformudur. Uygulama; sade arayüzü, mobil uyumlu yapısı ve katmanlı mimarisi ile akademik ve geliştirilebilir bir yapı sunar.
+**Technode Blog Sistemi**; kullanıcıların kayıt olup giriş yapabildiği, makale okuyup oluşturabildiği ve içeriklere yorum yapabildiği bir platformdur. Uygulama; sade arayüzü, mobil uyumlu yapısı ve katmanlı mimarisi ile akademik ve geliştirilebilir bir yapı sunar. MVC mimarisini profesyonel düzeyde uygulamak amacıyla geliştirilmiştir.
 
 ---
 
 ## ✨ Özellikler
 
 ### 📝 Makale Yönetimi
+
 * Makale oluşturma ve yayınlama
 * Makale listeleme
 * Makale detay sayfasında içerik görüntüleme
 
-### 💬 Yorum Sistemi
-* Makalelere yorum yazabilme özelliği
-* Kullanıcı etkileşimini artıran yapı
+### 👤 Üyelik & Güvenlik
 
-### 👤 Kullanıcı İşlemleri (Auth)
-* Kullanıcı kayıt olma
-* Giriş yapma ve oturum yönetimi
+* Kullanıcı kayıt olma ve giriş yapma
+* Oturum (Session) yönetimi
 * Kullanıcı bazlı işlem kontrolleri
 
-### 📱 Kullanıcı Deneyimi & Arayüz
-* **Responsive Tasarım:** Mobil, tablet ve masaüstü uyumlu
+### 💬 Etkileşim Sistemi
+
+* Makalelere yorum yazabilme özelliği
+* Kullanıcı etkileşimini artıran dinamik yapı
+
+### 📱 Kullanıcı Deneyimi
+
+* **Responsive Tasarım** (Mobil, tablet ve masaüstü uyumlu)
 * Sade ve kullanıcı dostu arayüz
 
 ### 🧩 Mimari Yapı
-* ASP.NET Core MVC mimarisi
-* **SoC (Separation of Concerns):** Controller, Model ve View katmanlarının ayrıştırılması
+
+* **ASP.NET Core MVC** mimarisi
+* **SoC (Separation of Concerns)** prensibi (Controller, Model, View ayrımı)
 * Düzenli ve okunabilir kod yapısı
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## 🛠️ Teknolojiler
 
-| Alan | Teknoloji |
-| --- | --- |
-| **Backend** | ASP.NET Core MVC (C#) |
-| **Frontend** | HTML5, CSS3 |
-| **View Engine** | Razor |
-| **IDE** | Visual Studio 2022 |
-| **Versiyon Kontrol** | Git & GitHub |
+| Katman        | Teknoloji                 |
+| ------------- | ------------------------- |
+| Backend       | **ASP.NET Core MVC (C#)** |
+| Frontend      | **HTML5, CSS3** |
+| View Engine   | **Razor** |
+| IDE           | **Visual Studio 2022** |
+| Sürüm Kontrol | **Git & GitHub** |
 
 ---
 
 ## 📂 Proje Yapısı
 
-```text
+```
 ├── Controllers
 ├── Models
+├── Services
 ├── Views
 │   ├── Account
-│   ├── Blog
+│   ├── Makales
 │   ├── Home
 │   └── Shared
+├── Data
+├── Migrations
 ├── wwwroot
 │   └── css
+│   └── js
 ├── appsettings.json
 ├── Program.cs
 └── README.md
+```
+---
 
+## 🚀 Kurulum
 
-⚙️ Kurulum ve Gereksinimler
-Gereksinimler
-Visual Studio 2022 veya üzeri
+Yerel ortamda çalıştırmak için:
 
-.NET SDK (ASP.NET Core destekli güncel sürüm)
+1. Depoyu klonlayın
 
-Not: Projede harici bir veritabanı veya ek NuGet paketi kullanılmamıştır.
+   ```bash
+   git clone [https://github.com/kullaniciadi/technode.git](https://github.com/kullaniciadi/technode.git)
 
-🚀 Kurulum Adımları
-Projeyi Klonlayın:
+2. Visual Studio’da projeyi açın
+3. `appsettings.json` içinde **SQL Server Connection String** bilgisini güncelleyin
+4. Migration’ları uygulayın
 
-Bash
+   ```bash
+   Update-Database
+   ```
+5. Uygulamayı çalıştırın (F5)
 
-git clone [https://github.com/kullaniciadi/technode.git](https://github.com/kullaniciadi/technode.git)
-Projeyi Açın:
+---
+## 🔐 Güvenlik Notları
+* Kullanıcı kayıt ve giriş işlemleri kontrol altındadır
 
-İndirdiğiniz klasörü Visual Studio ile açın.
+* Formlarda doğrulama (validation) mekanizmaları aktiftir
 
-Paketleri Yükleyin:
+* Proje geliştirmeye açık ve güvenli bir yapıdadır
 
-NuGet paketlerinin otomatik olarak yüklenmesini bekleyin (Restore).
+---
 
-Çalıştırın:
+## 🧪 Geliştirme Notları
+* MVC katmanları net şekilde ayrıştırılmıştır
 
-Projeyi başlatmak için Ctrl + F5 tuşlarına basın veya "Run" butonunu kullanın.
+* Harici veritabanı kullanılmamıştır (Veriler statik/in-memory tutulmaktadır)
 
-🔐 Güvenlik ve Geliştirme Notları
-Güvenlik: Kullanıcı kayıt ve giriş işlemleri kontrol altındadır. Formlarda doğrulama (validation) mekanizmaları aktiftir.
+* İleride eklenebilecekler: Veritabanı (SQL), Admin Paneli, Rol bazlı yetkilendirme
 
-Geliştirilebilirlik: MVC katmanları net bir şekilde ayrılmıştır. Proje şu an in-memory veya statik veri ile çalışmaktadır.
+## 👩‍💻 Geliştirici
+* Bu proje eğitim amaçlı geliştirilmiştir.
 
-Gelecek Planları:
+* Geliştirici: Şevval Cinek
 
-[ ] Veritabanı (SQL Server/SQLite) entegrasyonu
+* GitHub: [https://github.com/Sevvalcnk](https://github.com/Sevvalcnk)
 
-[ ] Admin paneli eklenmesi
-
-[ ] Rol bazlı yetkilendirme (Admin/User)
-
-📚 Ders Kapsamı
-Bu proje, ASP.NET Core MVC dersi kapsamında eğitim amaçlı olarak geliştirilmiştir. Temel amaç; MVC mimarisini öğrenmek, kullanıcı etkileşimli web uygulamaları geliştirmek ve GitHub üzerinde profesyonel bir proje sunumu hazırlamaktır.
-
-👩‍💻 Geliştirici
-Şevval Cinek
-
-📄 Lisans
-Bu proje eğitim amaçlıdır ve açık kaynak olarak sunulmuştur.
+## 📄 Lisans
+* Bu proje Eğitim Amaçlı olarak sunulmuştur.
