@@ -51,7 +51,7 @@ Technode Blog Sistemi; kullanıcıların kayıt olup giriş yapabildiği, makale
 
 ## 📂 Proje Yapısı
 
-```text
+
 ├── Controllers       # Uygulama mantığı ve yönlendirmeler
 ├── Models            # Veri yapıları ve iş kuralları
 ├── Views             # Kullanıcı arayüzü dosyaları
